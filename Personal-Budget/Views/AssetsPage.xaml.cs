@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using SQLite;
 using SQLitePCL;
 using Personal_Budget.Models;
+using Personal_Budget.ViewModels;
 using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -32,6 +33,7 @@ namespace Personal_Budget.Views
         public AssetsPage()
         {
             this.InitializeComponent();
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             /// Initializing a database
             conn = new SQLiteConnection(path);
             // Creating table

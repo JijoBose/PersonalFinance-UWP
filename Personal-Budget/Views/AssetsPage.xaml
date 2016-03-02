@@ -9,7 +9,13 @@
     xmlns:local="using:Personal_Budget.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Personal_Budget.ViewModels"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    
     <Page.Resources>
         <DataTemplate x:Key="AssetListDatavalue">
             <Grid>
@@ -71,9 +77,9 @@
         <!--  page header  -->
         <controls:PageHeader Content="Assets Page">
             <controls:PageHeader.SecondaryCommands>
-                <!--<AppBarButton Click="{x:Bind ViewModel.GotoSettings}" Label="Settings" />
+                <AppBarButton Click="{x:Bind ViewModel.GotoSettings}" Label="Settings" />
                 <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />
-                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />-->
+                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
             </controls:PageHeader.SecondaryCommands>
         </controls:PageHeader>
 
