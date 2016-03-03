@@ -69,6 +69,8 @@
             <TextBlock x:Name="FullTotal" Text="Full Total" FontSize="30" HorizontalAlignment="Center"/>
             <TextBlock x:Name="DebtRat" Text="debnt" FontSize="30" HorizontalAlignment="Center"/>
             <TextBlock x:Name="AssetRat" Text="Asset total" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="CreditSCore" Text="Credit Score" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="Percent" Text="Percentage" FontSize="30" HorizontalAlignment="Center"/>
 
             <ListView x:Name="DashTranList" ItemTemplate="{StaticResource DashTranDetails}"/>
 

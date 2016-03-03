@@ -39,17 +39,21 @@ namespace Personal_Budget.Views
             Calculations nnn = new Calculations();
 
             /// Full Total
-            FullTotal.Text = "Total Valuation: " + nnn.CreditValuation();
+            FullTotal.Text = "Total Valuation: " + nnn.CreditValuation().ToString();
 
             //// getting values of Income and Expense
-            Total.Text = "Income and Expense: " + nnn.IncomeExpenseValues();
+            Total.Text = "Income and Expense: " + nnn.IncomeExpenseValues().ToString();
 
             /// Calulate Asset value           
-            AssetRat.Text = "Assets: " + nnn.AssetCalculation();
+            AssetRat.Text = "Assets: " + nnn.AssetCalculation().ToString();
 
             /// calculate Debt value
-            DebtRat.Text = "Debt: " + nnn.DebtCalculation();
+            DebtRat.Text = "Debt: " + nnn.DebtCalculation().ToString();
 
+            /// Credit
+            //CreditSCore.Text = nnn.PercentageScore().ToString();
+            CreditSCore.Text = nnn.CreditRatio();
+            Percent.Text = nnn.PercentageScore().ToString();
           
         }
 
