@@ -40,6 +40,10 @@ namespace Personal_Budget.Views
             conn.CreateTable<Debt>();
             DateStamp.Date = DateTime.Now; // gets current date and time
 
+            conn.CreateTable<Debt>();
+            var query = conn.Table<Debt>();
+            DebtList.ItemsSource = query.ToList();
+
         }
 
         private async void AddData(object sender, RoutedEventArgs e)
@@ -54,6 +58,10 @@ namespace Personal_Budget.Views
                     DebtName = Desc.Text,
                     DebtAmount = Dmoney
                 });
+
+                conn.CreateTable<Debt>();
+                var query = conn.Table<Debt>();
+                DebtList.ItemsSource = query.ToList();
             }
             catch (FormatException)
             {
@@ -63,12 +71,12 @@ namespace Personal_Budget.Views
 
         }
 
-        private void RefreshList_Click(object sender, RoutedEventArgs e)
-        {
-            conn.CreateTable<Debt>();
-            var query = conn.Table<Debt>();
-            DebtList.ItemsSource = query.ToList();
-        }
+        //private void RefreshList_Click(object sender, RoutedEventArgs e)
+        //{
+        //    conn.CreateTable<Debt>();
+        //    var query = conn.Table<Debt>();
+        //    DebtList.ItemsSource = query.ToList();
+        //}
 
         private async void ClearFileds_Click(object sender, RoutedEventArgs e)
         {

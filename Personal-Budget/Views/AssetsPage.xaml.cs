@@ -39,6 +39,10 @@ namespace Personal_Budget.Views
             // Creating table
             conn.CreateTable<Assets>();
 
+            /// Refresh Data
+            var query = conn.Table<Assets>();
+            AssetListView.ItemsSource = query.ToList();
+
         }
 
         private async void AddData(object sender, RoutedEventArgs e)
@@ -50,6 +54,9 @@ namespace Personal_Budget.Views
                     AssetName = AssetNameText.Text,
                     AssetValue = Convert.ToDouble(AssetValue.Text)
                 });
+
+                var query = conn.Table<Assets>();
+                AssetListView.ItemsSource = query.ToList();
             }
             catch (FormatException)
             {
@@ -59,12 +66,12 @@ namespace Personal_Budget.Views
 
         }
 
-        private void RefreshList_Click(object sender, RoutedEventArgs e)
-        {
-            conn.CreateTable<Assets>();
-            var query = conn.Table<Assets>();
-            AssetListView.ItemsSource = query.ToList();
-        }
+        //private void RefreshList_Click(object sender, RoutedEventArgs e)
+        //{
+        //    conn.CreateTable<Assets>();
+        //    var query = conn.Table<Assets>();
+        //    AssetListView.ItemsSource = query.ToList();
+        //}
 
         private async void ClearFileds_Click(object sender, RoutedEventArgs e)
         {

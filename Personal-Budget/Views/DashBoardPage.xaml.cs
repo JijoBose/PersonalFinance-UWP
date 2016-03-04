@@ -51,9 +51,15 @@ namespace Personal_Budget.Views
             DebtRat.Text = "Debt: " + nnn.DebtCalculation().ToString();
 
             /// Credit
-            //CreditSCore.Text = nnn.PercentageScore().ToString();
-            CreditSCore.Text = nnn.CreditRatio();
-            Percent.Text = nnn.PercentageScore().ToString();
+            CreditSCore.Text = "Credit Ratio: " + nnn.CreditRatio();
+
+            Percent.Text = "Debt : " + nnn.PercentageScore().ToString("0.00") + "%";
+
+            //if (nnn.PercentageScore().ToString() == "NaN")
+            //{
+
+            //}
+
           
         }
 

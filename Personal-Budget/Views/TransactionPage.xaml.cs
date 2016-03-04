@@ -39,6 +39,10 @@ namespace Personal_Budget.Views
             // Creating table
             conn.CreateTable<Transactions>();
             DateStamp.Date = DateTime.Now; // gets current date and time
+
+            conn.CreateTable<Transactions>();
+            var query = conn.Table<Transactions>();
+            TransactionList.ItemsSource = query.ToList();
         }
 
         private async void AddData(object sender, RoutedEventArgs e)
@@ -56,6 +60,10 @@ namespace Personal_Budget.Views
                         Description = Desc.Text,
                         Amount = Convert.ToDouble(MoneyIn.Text)
                     });
+
+                    conn.CreateTable<Transactions>();
+                    var query = conn.Table<Transactions>();
+                    TransactionList.ItemsSource = query.ToList();
                 }
                 else /// detects if expense
                 {
@@ -68,6 +76,10 @@ namespace Personal_Budget.Views
                         Description = Desc.Text,
                         Amount = FMoney
                     });
+
+                    conn.CreateTable<Transactions>();
+                    var query = conn.Table<Transactions>();
+                    TransactionList.ItemsSource = query.ToList();
                 }
             }
             catch (FormatException)
@@ -77,12 +89,12 @@ namespace Personal_Budget.Views
             }
         }
 
-        private void RefreshList_Click(object sender, RoutedEventArgs e)
-        {
-            conn.CreateTable<Transactions>();
-            var query = conn.Table<Transactions>();
-            TransactionList.ItemsSource = query.ToList();
-        }
+        //private void RefreshList_Click(object sender, RoutedEventArgs e)
+        //{
+        //    conn.CreateTable<Transactions>();
+        //    var query = conn.Table<Transactions>();
+        //    TransactionList.ItemsSource = query.ToList();
+        //}
 
         private async void ClearFileds_Click(object sender, RoutedEventArgs e)
         {

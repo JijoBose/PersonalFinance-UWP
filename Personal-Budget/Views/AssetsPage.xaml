@@ -34,7 +34,7 @@
                 <Grid/>
             </CommandBar.Content>
             <AppBarButton Icon="Accept" Label="Add Transaction" Click="AddData"/>
-            <AppBarButton x:Name="RefreshList" Icon="Refresh" Label="Refresh List" Click="RefreshList_Click"/>
+            <!--<AppBarButton x:Name="RefreshList" Icon="Refresh" Label="Refresh List" Click="RefreshList_Click"/>-->
             <AppBarButton x:Name="ClearFileds" Icon="Clear" Label="Clear Fields" Click="ClearFileds_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
