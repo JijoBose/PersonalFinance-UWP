@@ -79,63 +79,63 @@ namespace Personal_Budget.Models
             }
             else 
             {
-                if (Percentage < 90 && Percentage >= 100)
+                if (Percentage > 90 || Percentage >= 100)
                 {
                     CreditRating = "CCC";
                     return CreditRating;
                 }
                 else
                 {
-                    if (Percentage < 80 && Percentage >= 90)
+                    if (Percentage > 80 || Percentage >= 90)
                     {
                         CreditRating = "B";
                         return CreditRating;
                     }
                     else
                     {
-                        if (Percentage < 70 && Percentage >= 80)
+                        if (Percentage > 70 || Percentage >= 80)
                         {
                             CreditRating = "BB";
                             return CreditRating;
                         }
                         else
                         {
-                            if (Percentage < 60 && Percentage >= 70)
+                            if (Percentage > 60 || Percentage >= 70)
                             {
                                 CreditRating = "BBB";
                                 return CreditRating;
                             }
                             else
                             {
-                                if (Percentage < 50 && Percentage >= 60)
+                                if (Percentage > 50 || Percentage >= 60)
                                 {
                                     CreditRating = "A";
                                     return CreditRating;
                                 }
                                 else
                                 {
-                                    if (Percentage < 40 && Percentage >= 50)
+                                    if (Percentage > 40 || Percentage >= 50)
                                     {
                                         CreditRating = "A+";
                                         return CreditRating;
                                     }
                                     else
                                     {
-                                        if (Percentage < 30 && Percentage >= 40)
+                                        if (Percentage > 30 || Percentage >= 40)
                                         {
                                             CreditRating = "AA";
                                             return CreditRating;
                                         }
                                         else
                                         {
-                                            if (Percentage < 20 && Percentage >= 30)
+                                            if (Percentage > 20 || Percentage >= 30)
                                             {
                                                 CreditRating = "AA+";
                                                 return CreditRating;
                                             }
                                             else
                                             {
-                                                if (Percentage < 10 && Percentage >= 20)
+                                                if (Percentage >= 10 || Percentage >= 20)
                                                 {
                                                     CreditRating = "AAA";
                                                     return CreditRating;
