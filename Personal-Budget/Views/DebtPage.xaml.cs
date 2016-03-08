@@ -50,14 +50,29 @@ namespace Personal_Budget.Views
         {
             try
             {
-                double Money = Convert.ToDouble(MoneyIn.Text);
-                double Dmoney = 0 - Money;
-                conn.Insert(new Debt()
+                if(DebtModeSelect.SelectionBoxItem.ToString() == "Add Debts")
                 {
-                    DateofDebt = DateStamp.Date.Value.DateTime,
-                    DebtName = Desc.Text,
-                    DebtAmount = Dmoney
-                });
+                    double Money = Convert.ToDouble(MoneyIn.Text);
+                    double Dmoney = 0 - Money;
+                    conn.Insert(new Debt()
+                    {
+                        DateofDebt = DateStamp.Date.Value.DateTime,
+                        DebtName = Desc.Text,
+                        DebtAmount = Dmoney
+                    });
+                }
+                else
+                {
+                    double Money = Convert.ToDouble(MoneyIn.Text);
+                    double Dmoney = Money;
+                    conn.Insert(new Debt()
+                    {
+                        DateofDebt = DateStamp.Date.Value.DateTime,
+                        DebtName = Desc.Text,
+                        DebtAmount = Dmoney
+                    });
+                }
+
 
                 conn.CreateTable<Debt>();
                 var query = conn.Table<Debt>();
