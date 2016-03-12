@@ -43,6 +43,13 @@ namespace Personal_Budget.Views
             conn.CreateTable<Transactions>();
             var query = conn.Table<Transactions>();
             TransactionList.ItemsSource = query.ToList();
+
+            conn.CreateTable<Accounts>();
+            conn.Insert(new Accounts { AccountName = "Bank" });
+
+            var query1 = conn.Table<Accounts>();
+            AccountsListSel.ItemsSource = query1.ToList();
+
         }
 
         private async void AddData(object sender, RoutedEventArgs e)
@@ -58,6 +65,7 @@ namespace Personal_Budget.Views
                         DateOfTran = DateStamp.Date.Value.DateTime,
                         TranType = IncExpSelect.SelectionBoxItem.ToString(),
                         Description = Desc.Text,
+                        Account = ((Accounts)AccountsListSel.SelectedItem).AccountName,
                         Amount = Convert.ToDouble(MoneyIn.Text)
                     });
 
@@ -89,18 +97,10 @@ namespace Personal_Budget.Views
             }
         }
 
-        //private void RefreshList_Click(object sender, RoutedEventArgs e)
-        //{
-        //    conn.CreateTable<Transactions>();
-        //    var query = conn.Table<Transactions>();
-        //    TransactionList.ItemsSource = query.ToList();
-        //}
-
         private async void ClearFileds_Click(object sender, RoutedEventArgs e)
         {
             Desc.Text = string.Empty;
             MoneyIn.Text = string.Empty;
-
             MessageDialog ClearDialog = new MessageDialog("Cleared", "information");
             await ClearDialog.ShowAsync();
         }

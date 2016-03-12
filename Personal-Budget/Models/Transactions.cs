@@ -13,6 +13,7 @@ namespace Personal_Budget.Models
         public int ID { get; set; }
 
         public DateTime DateOfTran { get; set; }
+        public string Account { get; set; }
 
         public string Description { get; set; }
         public string TranType { get; set; }
