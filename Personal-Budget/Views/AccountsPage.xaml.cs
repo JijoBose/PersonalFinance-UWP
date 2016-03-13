@@ -55,7 +55,8 @@ namespace Personal_Budget.Views
                 {
                     conn.Insert(new Accounts()
                     {
-                        AccountName = AccName.Text
+                        AccountName = AccName.Text,
+                        InitialAmount = Convert.ToDouble(MoneyIn.Text)
                     });
 
                     conn.CreateTable<Accounts>();
@@ -76,6 +77,13 @@ namespace Personal_Budget.Views
         {
             MessageDialog ClearDialog = new MessageDialog("Cleared", "information");
             await ClearDialog.ShowAsync();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            conn.CreateTable<Accounts>();
+            var query = conn.Table<Accounts>();
+            TransactionList.ItemsSource = query.ToList();
         }
     }
 }

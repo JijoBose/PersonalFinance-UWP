@@ -34,15 +34,10 @@ namespace Personal_Budget.Views
             /// Initializing a database
             conn = new SQLiteConnection(path);
             // Creating table
-            conn.CreateTable<Transactions>();
-
             Calculations nnn = new Calculations();
 
             /// Full Total
             FullTotal.Text = "Total Valuation: " + nnn.CreditValuation().ToString();
-
-            //// getting values of Income and Expense
-            Total.Text = "Income and Expense: " + nnn.IncomeExpenseValues().ToString();
 
             /// Calulate Asset value           
             AssetRat.Text = "Assets: " + nnn.AssetCalculation().ToString();
@@ -54,11 +49,6 @@ namespace Personal_Budget.Views
             CreditSCore.Text = "Credit Ratio: " + nnn.CreditRatio();
 
             Percent.Text = "Debt : " + nnn.PercentageScore().ToString("0.00") + "%";
-
-            //if (nnn.PercentageScore().ToString() == "NaN")
-            //{
-
-            //}
 
           
         }

@@ -48,6 +48,8 @@ namespace Personal_Budget.Views
 
         private async void AddData(object sender, RoutedEventArgs e)
         {
+            Calculations nnn = new Calculations();
+
             try
             {
                 if(DebtModeSelect.SelectionBoxItem.ToString() == "Add Debts")
@@ -65,14 +67,23 @@ namespace Personal_Budget.Views
                 {
                     double Money = Convert.ToDouble(MoneyIn.Text);
                     double Dmoney = Money;
-                    conn.Insert(new Debt()
-                    {
-                        DateofDebt = DateStamp.Date.Value.DateTime,
-                        DebtName = Desc.Text,
-                        DebtAmount = Dmoney
-                    });
-                }
 
+                    if (nnn.DebtCalculation() < Dmoney)
+                    {
+                        MessageDialog dialog = new MessageDialog("You Entered more than the debt value", "Oops..!");
+                        await dialog.ShowAsync();
+                    }
+                    else
+                    {
+                        conn.Insert(new Debt()
+                        {
+                            DateofDebt = DateStamp.Date.Value.DateTime,
+                            DebtName = Desc.Text,
+                            DebtAmount = Dmoney
+                        });
+                    }
+
+                }
 
                 conn.CreateTable<Debt>();
                 var query = conn.Table<Debt>();
@@ -86,13 +97,6 @@ namespace Personal_Budget.Views
 
         }
 
-        //private void RefreshList_Click(object sender, RoutedEventArgs e)
-        //{
-        //    conn.CreateTable<Debt>();
-        //    var query = conn.Table<Debt>();
-        //    DebtList.ItemsSource = query.ToList();
-        //}
-
         private async void ClearFileds_Click(object sender, RoutedEventArgs e)
         {
             Desc.Text = string.Empty;
@@ -100,6 +104,13 @@ namespace Personal_Budget.Views
 
             MessageDialog ClearDialog = new MessageDialog("Cleared", "information");
             await ClearDialog.ShowAsync();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            conn.CreateTable<Debt>();
+            var query = conn.Table<Debt>();
+            DebtList.ItemsSource = query.ToList();
         }
     }
 }

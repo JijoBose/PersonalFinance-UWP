@@ -40,29 +40,54 @@ namespace Personal_Budget.Models
             return _Tot;
         }
 
-        public double IncomeExpenseValues()
+        #region Old Methods for Income Expense
+        //public double IncomeExpenseValues()
+        //{
+        //    conn = new SQLiteConnection(path);
+        //    // Creating table
+        //    conn.CreateTable<Transactions>();
+
+        //    //// getting values
+        //    double Toto;
+        //    var SumQuery = conn.Query<Transactions>("SELECT * FROM Transactions");
+        //    var sumProdQty = SumQuery.AsEnumerable().Sum(o => o.Amount);
+        //    Toto = sumProdQty;
+        //    return Toto;
+        //}
+
+        #endregion
+
+        public double CreditValuation()
         {
             conn = new SQLiteConnection(path);
             // Creating table
-            conn.CreateTable<Transactions>();
+            conn.CreateTable<Accounts>();
 
             //// getting values
             double Toto;
-            var SumQuery = conn.Query<Transactions>("SELECT * FROM Transactions");
-            var sumProdQty = SumQuery.AsEnumerable().Sum(o => o.Amount);
+            var SumQuery = conn.Query<Accounts>("SELECT * FROM Accounts");
+            var sumProdQty = SumQuery.AsEnumerable().Sum(o => o.InitialAmount);
             Toto = sumProdQty;
             return Toto;
         }
 
-        public double CreditValuation()
+        public double AccountTotal()
         {
-            double Total = IncomeExpenseValues() + AssetCalculation() + DebtCalculation();
-            return Total;
+            conn = new SQLiteConnection(path);
+            // Creating table
+            conn.CreateTable<Accounts>();
+
+            //// getting values
+            double Toto;
+            var SumQuery = conn.Query<Accounts>("SELECT * FROM Accounts");
+            var sumProdQty = SumQuery.AsEnumerable().Sum(o => o.InitialAmount);
+            Toto = sumProdQty;
+            return Toto;
         }
 
         public double PercentageScore()
         {
-            double TotalAssetincome = AssetCalculation() + IncomeExpenseValues();
+            double TotalAssetincome = AssetCalculation() + CreditValuation();
             double percentage = (-DebtCalculation() / (TotalAssetincome) * 100);
             return percentage;
         }

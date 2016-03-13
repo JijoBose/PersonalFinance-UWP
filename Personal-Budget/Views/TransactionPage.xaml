@@ -97,6 +97,7 @@
             </ComboBox>
             <TextBox x:Name="MoneyIn" Header="Amount" TextWrapping="Wrap" InputScope="CurrencyAmountAndSymbol"/>
             <TextBox x:Name="Desc" Header="Description"/>
+            <TextBlock x:Name="Demo" Text="Demo text here"/>
 
             <ListView x:Name="TransactionList" ItemTemplate="{StaticResource TransListView}" 
                       ScrollViewer.HorizontalScrollMode="Disabled"

@@ -10,6 +10,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Personal_Budget.ViewModels"
+    Loaded="Page_Loaded"
     mc:Ignorable="d">
 
     <Page.DataContext>
@@ -22,6 +23,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding ID}"/>
                     <TextBlock Text="{Binding AccountName}"/>
+                    <TextBlock Text="{Binding InitialAmount}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -80,6 +82,7 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top" Orientation="Vertical" Margin="10,5,10,0">
             <TextBox x:Name="AccName" Header="Account Name" TextWrapping="Wrap"/>
+            <TextBox x:Name="MoneyIn" Header="Initial Amount" TextWrapping="Wrap"/>
 
             <ListView x:Name="TransactionList" ItemTemplate="{StaticResource TransListView}" 
                       ScrollViewer.HorizontalScrollMode="Disabled"

@@ -65,8 +65,7 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top" Orientation="Vertical"
 			Padding="12,8,0,0">
-            <TextBlock x:Name="Total" Text="Loading.." FontSize="30" HorizontalAlignment="Center" Foreground="#FF47D447"/>
-            <TextBlock x:Name="FullTotal" Text="Full Total" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="FullTotal" Text="Full Total" FontSize="30" HorizontalAlignment="Center" Foreground="#FF47D447"/>
             <TextBlock x:Name="DebtRat" Text="debnt" FontSize="30" HorizontalAlignment="Center"/>
             <TextBlock x:Name="AssetRat" Text="Asset total" FontSize="30" HorizontalAlignment="Center"/>
             <TextBlock x:Name="CreditSCore" Text="Credit Score" FontSize="30" HorizontalAlignment="Center"/>

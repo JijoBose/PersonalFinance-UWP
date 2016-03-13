@@ -15,5 +15,8 @@ namespace Personal_Budget.Models
         [Unique]
         public string AccountName { get; set; }
 
+        public double InitialAmount { get; set; }
+
+
     }
 }
