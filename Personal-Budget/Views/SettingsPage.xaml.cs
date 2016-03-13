@@ -40,6 +40,7 @@ namespace Personal_Budget.Views
             conn.DropTable<Transactions>();
             conn.DropTable<Debt>();
             conn.DropTable<Assets>();
+            conn.DropTable<Accounts>();
             DeletePopupbar.IsOpen = false;
         }
 

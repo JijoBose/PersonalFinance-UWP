@@ -40,13 +40,10 @@ namespace Personal_Budget.Views
             conn.CreateTable<Transactions>();
             DateStamp.Date = DateTime.Now; // gets current date and time
 
-            conn.CreateTable<Transactions>();
             var query = conn.Table<Transactions>();
             TransactionList.ItemsSource = query.ToList();
 
             conn.CreateTable<Accounts>();
-            conn.Insert(new Accounts { AccountName = "Bank" });
-
             var query1 = conn.Table<Accounts>();
             AccountsListSel.ItemsSource = query1.ToList();
 
@@ -103,6 +100,13 @@ namespace Personal_Budget.Views
             MoneyIn.Text = string.Empty;
             MessageDialog ClearDialog = new MessageDialog("Cleared", "information");
             await ClearDialog.ShowAsync();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            conn.CreateTable<Accounts>();
+            var query1 = conn.Table<Accounts>();
+            AccountsListSel.ItemsSource = query1.ToList();
         }
     }
 }

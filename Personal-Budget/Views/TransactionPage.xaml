@@ -10,6 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Class="Personal_Budget.Views.TransactionPage"
     xmlns:vm="using:Personal_Budget.ViewModels"
+    Loaded="Page_Loaded"
     mc:Ignorable="d">
 
     <Page.DataContext>

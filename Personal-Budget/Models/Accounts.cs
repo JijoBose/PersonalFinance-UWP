@@ -12,8 +12,8 @@ namespace Personal_Budget.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
+        [Unique]
         public string AccountName { get; set; }
-        public double Money { get; set; }
 
     }
 }

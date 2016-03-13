@@ -22,7 +22,6 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding ID}"/>
                     <TextBlock Text="{Binding AccountName}"/>
-                    <TextBlock Text="{Binding Money}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -81,7 +80,6 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top" Orientation="Vertical" Margin="10,5,10,0">
             <TextBox x:Name="AccName" Header="Account Name" TextWrapping="Wrap"/>
-            <TextBox x:Name="MoneyIn" Header="Amount" TextWrapping="Wrap" InputScope="CurrencyAmountAndSymbol"/>
 
             <ListView x:Name="TransactionList" ItemTemplate="{StaticResource TransListView}" 
                       ScrollViewer.HorizontalScrollMode="Disabled"

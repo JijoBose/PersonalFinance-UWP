@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using SQLite;
+using SQLitePCL;
 using Personal_Budget.Models;
 using Windows.UI.Popups;
 
@@ -41,18 +42,38 @@ namespace Personal_Budget.Views
 
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            conn.Insert(new Accounts()
+            try
             {
-                AccountName = AccName.Text,
-                Money = Convert.ToDouble(MoneyIn.Text)
-            });
+                if(AccName.Text == null)
+                {
+                    MessageDialog dialog = new MessageDialog("Amount Name not Entered", "Oops..!");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    conn.Insert(new Accounts()
+                    {
+                        AccountName = AccName.Text
+                    });
+
+                    conn.CreateTable<Accounts>();
+                    var query = conn.Table<Accounts>();
+                    TransactionList.ItemsSource = query.ToList();
+                }
+
+            }
+            catch (SQLiteException)
+            {
+                MessageDialog dialog = new MessageDialog("You forgot to enter the Amount or entered an invalid data", "Oops..!");
+                await dialog.ShowAsync();
+            }
+
         }
 
         private async void ClearFileds_Click(object sender, RoutedEventArgs e)
         {
-            MoneyIn.Text = string.Empty;
             MessageDialog ClearDialog = new MessageDialog("Cleared", "information");
             await ClearDialog.ShowAsync();
         }

@@ -45,6 +45,13 @@
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Assets"/>
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
+
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:AccountsPage">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="48" Height="48" Symbol="Account"/>
+                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Account"/>
+                </StackPanel>
+            </Controls:HamburgerButtonInfo>
             <!--  mainpage button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage">
                 <StackPanel Orientation="Horizontal">
