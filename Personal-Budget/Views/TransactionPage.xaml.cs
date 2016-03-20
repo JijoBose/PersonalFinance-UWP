@@ -39,40 +39,43 @@ namespace Personal_Budget.Views
             // Creating table
             conn.CreateTable<Transactions>();
             DateStamp.Date = DateTime.Now; // gets current date and time
+            DateStamp1.Date = DateTime.Now;
 
-            var query = conn.Table<Transactions>();
-            TransactionList.ItemsSource = query.ToList();
+            //var query = conn.Table<Transactions>();
+            //TransactionList.ItemsSource = query.ToList();
 
             conn.CreateTable<Accounts>();
             var query1 = conn.Table<Accounts>();
             AccountsListSel.ItemsSource = query1.ToList();
+            FromAccount.ItemsSource = query1.ToList();
+            ToAccount.ItemsSource = query1.ToList();
+
 
         }
 
         private async void AddData(object sender, RoutedEventArgs e)
         {
             string AccountSelection = ((Accounts)AccountsListSel.SelectedItem).AccountName;
-            string DemoIndex = "-1";
             /// inserts the data if money value is null
             try
             {
                 //// detects if income 
                 if (IncExpSelect.SelectionBoxItem.ToString() == "Income")
                 {
-                        conn.Insert(new Transactions()
-                        {
-                            DateOfTran = DateStamp.Date.Value.DateTime,
-                            TranType = IncExpSelect.SelectionBoxItem.ToString(),
-                            Description = Desc.Text,
-                            Account = AccountSelection,
-                            Amount = Convert.ToDouble(MoneyIn.Text)
-                        });
+                    conn.Insert(new Transactions()
+                    {
+                        DateOfTran = DateStamp.Date.Value.DateTime,
+                        TranType = IncExpSelect.SelectionBoxItem.ToString(),
+                        Description = Desc.Text,
+                        Account = AccountSelection,
+                        Amount = Convert.ToDouble(MoneyIn.Text)
+                    });
 
-                        var query3 = conn.Query<Accounts>("UPDATE Accounts SET InitialAmount = " + TransactionToAccountIncome() + " WHERE AccountName ='" + AccountSelection + "'");
+                    var query3 = conn.Query<Accounts>("UPDATE Accounts SET InitialAmount = " + TransactionToAccountIncome() + " WHERE AccountName ='" + AccountSelection + "'");
 
-                        conn.CreateTable<Transactions>();
-                        var query = conn.Table<Transactions>();
-                        TransactionList.ItemsSource = query.ToList();
+                    //conn.CreateTable<Transactions>();
+                    //var query = conn.Table<Transactions>();
+                    //TransactionList.ItemsSource = query.ToList();
                 }
                 else /// detects if expense
                 {
@@ -89,9 +92,9 @@ namespace Personal_Budget.Views
 
                     double Exp = FMoney + TransactionToExpense();
                     var query3 = conn.Query<Accounts>("UPDATE Accounts SET InitialAmount = " + Exp + " WHERE AccountName ='" + AccountSelection + "'");
-                    conn.CreateTable<Transactions>();
-                    var query = conn.Table<Transactions>();
-                    TransactionList.ItemsSource = query.ToList();
+                    //conn.CreateTable<Transactions>();
+                    //var query = conn.Table<Transactions>();
+                    //TransactionList.ItemsSource = query.ToList();
                 }
             }
             catch (FormatException)
@@ -99,21 +102,7 @@ namespace Personal_Budget.Views
                 MessageDialog dialog = new MessageDialog("You forgot to enter the Amount or entered an invalid data", "Oops..!");
                 await dialog.ShowAsync();
             }
-        }
 
-        private async void ClearFileds_Click(object sender, RoutedEventArgs e)
-        {
-            Desc.Text = string.Empty;
-            MoneyIn.Text = string.Empty;
-            MessageDialog ClearDialog = new MessageDialog("Cleared", "information");
-            await ClearDialog.ShowAsync();
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            conn.CreateTable<Accounts>();
-            var query1 = conn.Table<Accounts>();
-            AccountsListSel.ItemsSource = query1.ToList();
         }
 
         public double TransactionToAccountIncome()

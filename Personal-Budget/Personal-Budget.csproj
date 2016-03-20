@@ -100,6 +100,7 @@
     <Compile Include="Models\Accounts.cs" />
     <Compile Include="Models\Assets.cs" />
     <Compile Include="Models\Calculations.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Debt.cs" />
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
