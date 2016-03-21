@@ -39,7 +39,7 @@ namespace Personal_Budget.Views
             // Creating table
             conn.CreateTable<Transactions>();
             DateStamp.Date = DateTime.Now; // gets current date and time
-            DateStamp1.Date = DateTime.Now;
+            //DateStamp1.Date = DateTime.Now;
 
             //var query = conn.Table<Transactions>();
             //TransactionList.ItemsSource = query.ToList();
@@ -47,8 +47,8 @@ namespace Personal_Budget.Views
             conn.CreateTable<Accounts>();
             var query1 = conn.Table<Accounts>();
             AccountsListSel.ItemsSource = query1.ToList();
-            FromAccount.ItemsSource = query1.ToList();
-            ToAccount.ItemsSource = query1.ToList();
+            //FromAccount.ItemsSource = query1.ToList();
+            //ToAccount.ItemsSource = query1.ToList();
 
 
         }

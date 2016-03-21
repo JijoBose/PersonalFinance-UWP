@@ -67,10 +67,11 @@ namespace Personal_Budget.Views
                 {
                     double Money = Convert.ToDouble(MoneyIn.Text);
                     double Dmoney = Money;
+                    double DebtAmt = nnn.DebtCalculation() + Dmoney;
 
-                    if (nnn.DebtCalculation() < Dmoney)
+                    if (DebtAmt > 0)
                     {
-                        MessageDialog dialog = new MessageDialog("You Entered more than the debt value", "Oops..!");
+                        MessageDialog dialog = new MessageDialog("You Entered more than the debt value " + nnn.DebtCalculation() + " ", "Oops..!");
                         await dialog.ShowAsync();
                     }
                     else
