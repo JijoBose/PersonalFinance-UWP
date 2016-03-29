@@ -37,10 +37,10 @@ namespace Personal_Budget.Views
         {
             conn = new SQLiteConnection(path);
             /// deleteing table
+            conn.DropTable<Accounts>();
             conn.DropTable<Transactions>();
             conn.DropTable<Debt>();
             conn.DropTable<Assets>();
-            conn.DropTable<Accounts>();
             DeletePopupbar.IsOpen = false;
         }
 

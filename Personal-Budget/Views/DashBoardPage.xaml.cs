@@ -37,7 +37,7 @@ namespace Personal_Budget.Views
             Calculations nnn = new Calculations();
 
             /// Full Total
-            FullTotal.Text = "Total Valuation: " + nnn.CreditValuation().ToString();
+            FullTotal.Text = "Total Valuation: " + nnn.FullValuation().ToString();
 
             /// Calulate Asset value           
             AssetRat.Text = "Assets: " + nnn.AssetCalculation().ToString();

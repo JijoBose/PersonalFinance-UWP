@@ -27,6 +27,12 @@ namespace Personal_Budget.Models
             return SUMOF;
         }
 
+        public double FullValuation()
+        {
+            double Temp1 = AssetCalculation() + AccountTotal();
+            return Temp1;
+        }
+
         public double AssetCalculation()
         {
             conn = new SQLiteConnection(path);
@@ -38,37 +44,6 @@ namespace Personal_Budget.Models
             var sumProdQty = SumQuery.AsEnumerable().Sum(o => o.AssetValue);
             _Tot = sumProdQty;
             return _Tot;
-        }
-
-        #region Old Methods for Income Expense
-        //public double IncomeExpenseValues()
-        //{
-        //    conn = new SQLiteConnection(path);
-        //    // Creating table
-        //    conn.CreateTable<Transactions>();
-
-        //    //// getting values
-        //    double Toto;
-        //    var SumQuery = conn.Query<Transactions>("SELECT * FROM Transactions");
-        //    var sumProdQty = SumQuery.AsEnumerable().Sum(o => o.Amount);
-        //    Toto = sumProdQty;
-        //    return Toto;
-        //}
-
-        #endregion
-
-        public double CreditValuation()
-        {
-            conn = new SQLiteConnection(path);
-            // Creating table
-            conn.CreateTable<Accounts>();
-
-            //// getting values
-            double Toto;
-            var SumQuery = conn.Query<Accounts>("SELECT * FROM Accounts");
-            var sumProdQty = SumQuery.AsEnumerable().Sum(o => o.InitialAmount);
-            Toto = sumProdQty;
-            return Toto;
         }
 
         public double AccountTotal()
@@ -87,7 +62,7 @@ namespace Personal_Budget.Models
 
         public double PercentageScore()
         {
-            double TotalAssetincome = AssetCalculation() + CreditValuation();
+            double TotalAssetincome = FullValuation();
             double percentage = (-DebtCalculation() / (TotalAssetincome) * 100);
             return percentage;
         }

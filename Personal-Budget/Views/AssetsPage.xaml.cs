@@ -81,5 +81,13 @@ namespace Personal_Budget.Views
             MessageDialog ClearDialog = new MessageDialog("Cleared", "information");
             await ClearDialog.ShowAsync();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            conn.CreateTable<Assets>();
+            /// Refresh Data
+            var query = conn.Table<Assets>();
+            AssetListView.ItemsSource = query.ToList();
+        }
     }
 }

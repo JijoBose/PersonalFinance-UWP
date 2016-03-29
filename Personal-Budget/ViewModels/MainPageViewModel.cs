@@ -17,7 +17,7 @@ namespace Personal_Budget.ViewModels
             }
         }
 
-        string _Value = "Gas";
+        string _Value = "Hello world";
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
         public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
